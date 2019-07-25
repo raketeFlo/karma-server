@@ -8,7 +8,6 @@ router.post('/sign-in', ctrlUser.checkUser);
 router.patch('/user/:id', ctrlUser.addCompletedAction);
 
 router.get('/actions', ctrlAction.getActions);
-router.post('/actions', ctrlAction.addAction);
 
 
 module.exports = router;
