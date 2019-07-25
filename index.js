@@ -1,7 +1,17 @@
 const Koa = require('koa');
+const bodyParser = require('koa-bodyparser');
+const logger = require('koa-logger');
+const router = require('./routers/user.router');
 
 const app = new Koa();
 const port = 3001;
+
+// middlewares
+app
+  .use(bodyParser())
+  .use(logger())
+  .use(router.routes());
+
 
 app.listen(port, () => {
   // eslint-disable-next-line no-console
