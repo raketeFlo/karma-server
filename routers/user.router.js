@@ -1,9 +1,11 @@
 const Router = require('koa-router');
+const ctrlUser = require('../controllers/user.controller');
+const ctrlAction = require('../controllers/action.controller');
 
 const router = new Router();
 
-router.post('/sign-in', () => console.log('/login working'));
-router.get('/actions', () => console.log('/ actions loading working'));
-router.patch('/user/:id', () => console.log('/patch actions working'));
+router.post('/sign-in', ctrlUser.checkUser);
+//router.get('/actions', ctrlAction.getActions);
+router.patch('/user/:id', ctrlUser.addCompletedAction);
 
 module.exports = router;

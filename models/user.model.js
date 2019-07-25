@@ -2,7 +2,7 @@ const db = require('../db');
 
 const { Schema } = db;
 
-const UserSchema = new Schema({
+const UserSchema = Schema({
   name: {
     type: String,
     required: true,
