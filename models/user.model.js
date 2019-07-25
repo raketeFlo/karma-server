@@ -3,11 +3,12 @@ const db = require('../db');
 const { Schema } = db;
 
 const UserSchema = Schema({
-  name: {
+  user_name: {
     type: String,
+    unique: true,
     required: true,
   },
-  password: {
+  user_password: {
     type: String,
     required: true,
   },
