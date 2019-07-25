@@ -3,19 +3,20 @@ const User = require('../models/user.model');
 
 const addCompletedAction = async (ctx, next) => {
   try {
-    const newCompletedAction = await User.findByIdAndUpdate(
-      ctx.request.body._id,
-      { completedActions: ctx.request.body.completedActions },
+    const user = await User.findByIdAndUpdate(
+      { _id: ctx.request.body._id },
+      { $push: { completedActions: ctx.request.body.completedActions } },
       { new: true },
     );
-    // response body
-    ctx.body = newCompletedAction;
+    // send back updated user
+    ctx.body = user;
   } catch (error) {
     ctx.status = error.statusCode || error.status || 500;
     ctx.body = { message: error.message };
   }
 };
 
+// check if password is correct and if user exists
 const checkUser = async (ctx, next) => {
   try {
     const user = await User.findOne({ user_name: ctx.request.body.user_name });
