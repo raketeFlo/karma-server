@@ -8,8 +8,8 @@ const port = 3001;
 
 // middlewares
 app
-  .use(bodyParser())
   .use(logger())
+  .use(bodyParser())
   .use(router.routes());
 
 
