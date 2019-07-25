@@ -1,7 +1,8 @@
 /* eslint-disable no-underscore-dangle */
 const User = require('../models/user.model');
 
-const addCompletedAction = async (ctx, next) => {
+// add completed action to user
+const addCompletedAction = async (ctx) => {
   try {
     const user = await User.findByIdAndUpdate(
       { _id: ctx.request.body._id },
@@ -17,7 +18,7 @@ const addCompletedAction = async (ctx, next) => {
 };
 
 // check if password is correct and if user exists
-const checkUser = async (ctx, next) => {
+const checkUser = async (ctx) => {
   try {
     const user = await User.findOne({ user_name: ctx.request.body.user_name });
     if (user) {
