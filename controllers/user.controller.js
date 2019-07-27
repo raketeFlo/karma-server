@@ -1,12 +1,12 @@
 /* eslint-disable no-underscore-dangle */
 const User = require('../models/user.model');
 
-// add completed action to user
-const addCompletedAction = async (ctx, next) => {
+// update user
+const updateUser = async (ctx, next) => {
   try {
     const user = await User.findByIdAndUpdate(
       { _id: ctx.request.body._id },
-      { $push: { completedActions: ctx.request.body.completedActions } },
+      ctx.request.body,
       { new: true },
     );
     // send back updated user
@@ -51,4 +51,4 @@ const getUser = async (ctx, next) => {
 };
 
 
-module.exports = { addCompletedAction, checkUser, getUser };
+module.exports = { updateUser, checkUser, getUser };

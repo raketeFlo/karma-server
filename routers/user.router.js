@@ -6,7 +6,7 @@ const router = new Router();
 
 router.post('/sign-in', ctrlUser.checkUser);
 router.get('/user', ctrlUser.getUser);
-router.patch('/user/:id', ctrlUser.addCompletedAction);
+router.put('/user', ctrlUser.updateUser);
 
 router.get('/actions', ctrlAction.getActions);
 
