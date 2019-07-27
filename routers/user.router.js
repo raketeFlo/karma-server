@@ -5,6 +5,7 @@ const ctrlAction = require('../controllers/action.controller');
 const router = new Router();
 
 router.post('/sign-in', ctrlUser.checkUser);
+router.get('/user', ctrlUser.getUser);
 router.patch('/user/:id', ctrlUser.addCompletedAction);
 
 router.get('/actions', ctrlAction.getActions);

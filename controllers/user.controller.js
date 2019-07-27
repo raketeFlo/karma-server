@@ -2,7 +2,7 @@
 const User = require('../models/user.model');
 
 // add completed action to user
-const addCompletedAction = async (ctx) => {
+const addCompletedAction = async (ctx, next) => {
   try {
     const user = await User.findByIdAndUpdate(
       { _id: ctx.request.body._id },
@@ -15,10 +15,11 @@ const addCompletedAction = async (ctx) => {
     ctx.status = error.statusCode || error.status || 500;
     ctx.body = { message: error.message };
   }
+  await next();
 };
 
 // check if password is correct and if user exists
-const checkUser = async (ctx) => {
+const checkUser = async (ctx, next) => {
   try {
     const user = await User.findOne({ user_name: ctx.request.body.user_name });
     if (user) {
@@ -34,7 +35,20 @@ const checkUser = async (ctx) => {
     ctx.status = error.statusCode || error.status || 500;
     ctx.body = { message: error.message };
   }
+  await next();
+};
+
+// load user
+const getUser = async (ctx, next) => {
+  try {
+    const user = await User.find();
+    ctx.body = user;
+  } catch (error) {
+    ctx.status = error.statusCode || error.status || 500;
+    ctx.body = { message: error.message };
+  }
+  await next();
 };
 
 
-module.exports = { addCompletedAction, checkUser };
+module.exports = { addCompletedAction, checkUser, getUser };
