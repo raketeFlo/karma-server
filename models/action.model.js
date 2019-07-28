@@ -15,6 +15,10 @@ const ActionSchema = new Schema({
     type: String,
     required: true,
   },
+  category: {
+    type: String,
+    required: true,
+  },
 });
 
 module.exports = db.model('Action', ActionSchema);
