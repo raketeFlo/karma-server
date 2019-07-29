@@ -9,6 +9,7 @@ const updateUser = async (ctx) => {
     { new: true },
   );
   // send back updated user
+  ctx.status = 200;
   ctx.body = user;
 };
 
@@ -17,11 +18,14 @@ const checkUser = async (ctx) => {
   const user = await User.findOne({ user_name: ctx.request.body.user_name });
   if (user) {
     if (user.user_password === ctx.request.body.user_password) {
+      ctx.status = 200;
       ctx.body = 'Password correct';
     } else {
+      ctx.status = 401;
       ctx.body = 'Wrong password';
     }
   } else {
+    ctx.status = 400;
     ctx.body = 'User does not exist';
   }
 };
@@ -29,6 +33,7 @@ const checkUser = async (ctx) => {
 // load user
 const getUser = async (ctx) => {
   const user = await User.find();
+  ctx.status = 200;
   ctx.body = user;
 };
 
