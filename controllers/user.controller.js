@@ -32,13 +32,13 @@ const checkUser = async (ctx) => {
     } else {
       ctx.status = 401;
       ctx.body = {
-        fail: 'wrong password',
+        fail: 'password',
       };
     }
   } else {
     ctx.status = 401;
     ctx.body = {
-      fail: 'username does not exist',
+      fail: 'username',
     };
   }
 };
