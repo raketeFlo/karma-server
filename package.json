@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/steelersbcn/karma-server#readme",
   "dependencies": {
+    "bcrypt": "^3.0.6",
     "koa": "^2.7.0",
     "koa-404-handler": "0.0.2",
     "koa-better-error-handler": "^2.0.0",

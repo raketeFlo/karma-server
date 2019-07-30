@@ -1,5 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 const User = require('../models/user.model');
+const bcrypt = require('bcrypt');
 
 // update user
 const updateUser = async (ctx) => {
@@ -15,24 +16,25 @@ const updateUser = async (ctx) => {
 
 // check if password is correct and if user exists
 const checkUser = async (ctx) => {
-  const user = await User.findOne({ user_name: ctx.request.body.user_name });
-  if (user) {
-    if (user.user_password === ctx.request.body.user_password) {
-      ctx.status = 200;
-      ctx.body = 'Password correct';
-    } else {
-      ctx.status = 401;
-      ctx.body = 'Wrong password';
-    }
-  } else {
-    ctx.status = 400;
-    ctx.body = 'User does not exist';
+  const basic = ctx.headers.authorization.split(' ');
+  if (basic.length < 2 && basic[0] !== 'Basic') {
+    throw new Error('Missing basic authentication header');
+  }
+  // decode base64
+  const [username, password] = Buffer.from(basic[1], 'base64').toString('utf-8').split(':');
+  const user = await User.findOne({ user_name: username });
+  const match = await bcrypt.compare(password, user.user_password);
+
+  if (match) {
+    ctx.status = 200;
+    ctx.body = user;
   }
 };
 
-// load user
+// load user with unique username
 const getUser = async (ctx) => {
-  const user = await User.find();
+  const userName = ctx.params.username;
+  const user = await User.find({ user_name: userName });
   ctx.status = 200;
   ctx.body = user;
 };

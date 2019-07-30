@@ -4,8 +4,8 @@ const ctrlAction = require('../controllers/action.controller');
 
 const router = new Router();
 
-router.post('/sign-in', ctrlUser.checkUser);
-router.get('/user', ctrlUser.getUser);
+router.get('/sign-in', ctrlUser.checkUser);
+router.get('/user/:username', ctrlUser.getUser);
 router.put('/user', ctrlUser.updateUser);
 
 router.get('/actions', ctrlAction.getActions);
