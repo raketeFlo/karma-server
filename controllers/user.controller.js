@@ -23,11 +23,23 @@ const checkUser = async (ctx) => {
   // decode base64
   const [username, password] = Buffer.from(basic[1], 'base64').toString('utf-8').split(':');
   const user = await User.findOne({ user_name: username });
-  const match = await bcrypt.compare(password, user.user_password);
-
-  if (match) {
-    ctx.status = 200;
-    ctx.body = user;
+  // check if user exists and if password correct
+  if (user) {
+    const match = await bcrypt.compare(password, user.user_password);
+    if (match) {
+      ctx.status = 200;
+      ctx.body = JSON.stringify(user.user_name);
+    } else {
+      ctx.status = 401;
+      ctx.body = {
+        fail: 'wrong password',
+      };
+    }
+  } else {
+    ctx.status = 401;
+    ctx.body = {
+      fail: 'username does not exist',
+    };
   }
 };
 
