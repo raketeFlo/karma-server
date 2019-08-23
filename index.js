@@ -1,3 +1,4 @@
+require('dotenv').config();
 const Koa = require('koa');
 const bodyParser = require('koa-bodyparser');
 const logger = require('koa-logger');
@@ -7,7 +8,7 @@ const cors = require('koa-cors');
 const router = require('./routers/router');
 
 const app = new Koa();
-const port = 3001;
+const { PORT } = process.env;
 
 // override koa's undocumented error hanlder
 app.context.onerror = errorHandler;
@@ -23,7 +24,7 @@ app
   .use(router.routes());
 
 
-app.listen(port, () => {
+app.listen(PORT, () => {
   // eslint-disable-next-line no-console
-  console.log(`Server is listening on port ${port}🤘`);
+  console.log(`Server is listening on port ${PORT }🤘`);
 });
