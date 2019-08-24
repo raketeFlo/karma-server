@@ -8,7 +8,7 @@ const cors = require('koa-cors');
 const router = require('./routers/router');
 
 const app = new Koa();
-const { PORT } = process.env || 3001;
+const { PORT } = process.env || 8080;
 
 // override koa's undocumented error hanlder
 app.context.onerror = errorHandler;
