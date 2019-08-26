@@ -9,11 +9,23 @@ Karma-server is the server for the react-native app Karma.
 
 ## Installation
 
-Install the dependencies
+1. Clone the repository
+```bash
+git clone https://github.com/steelersbcn/karma-server
+cd karma-server
+```
+
+2. Install the dependencies
 
 ```bash
 npm install
 ```
+## Get it started
+
+```bash
+npx nodemon index.js
+```
+
 
 ## Tech Stack
 
