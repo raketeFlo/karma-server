@@ -6,7 +6,7 @@
 Society is more and more moving towards an individualistic culture. Karma helps you to get ideas of how you can change this trend. You will help Darthvader to improve his Karma level while completing good actions in real life.
 
 
-## Screenshot
+## Screenshots
 
 <img src='./Karma.png' alt='login' width="1400" height="700">
 
