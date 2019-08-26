@@ -1,6 +1,9 @@
 # Karma | Server
 
-Karma-server is the server for the react-native app Karma.
+
+"Do good and good will come to you!"
+
+Society is more and more moving towards an individualistic culture. Karma helps you to get ideas of how you can change this trend. You will help Darthvader to improve his Karma level while completing good actions in real life.
 
 
 ## Screenshot
