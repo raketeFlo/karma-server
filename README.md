@@ -1,4 +1,4 @@
-# karma-server
+# Karma | Server
 
 Karma-server is the server for the react-native app Karma.
 
