@@ -32,3 +32,6 @@ npx nodemon index.js
 - Koa v2.7.0
 - Mongoose v5.6.6
 - MongoDB
+
+## Developer
+Florian Jost [LinkedIn](https://www.linkedin.com/in/fjost/)
